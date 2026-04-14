@@ -1,72 +1,82 @@
 # LiveCaptions Translator (Overlay Translator)
 
-LiveCaptions Translator is a powerful, real-time desktop application designed to translate system audio and speech into your chosen language. By leveraging the built-in Windows Live Captions feature, it provides a seamless, low-latency translation experience displayed in a highly customizable overlay window.
+**LiveCaptions Translator** is a sophisticated, real-time desktop application that bridges the gap between system audio and understanding. By harnessing the power of Windows 11's native Live Captions and integrating modern LLMs, it delivers high-accuracy, low-latency translations directly into a customizable, non-intrusive overlay.
 
 ![Version](https://img.shields.io/badge/version-1.2.0.0-blue)
 ![Platform](https://img.shields.io/badge/platform-Windows%2011-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-orange)
 
-## ✨ Features
+---
 
-- **Real-time Translation:** Translates audio captured by Windows Live Captions instantly.
-- **Multiple API Support:** Integration with a wide range of translation services:
-  - **LLM-based:** OpenAI, Ollama (Local), LMStudio, OpenRouter.
-  - **Traditional:** Google Translate (Web/API), DeepL, Youdao, Baidu, LibreTranslate.
-  - **Custom:** MTranServer.
-- **Context-Aware Translation:** Uses LLMs to maintain context across sentences, significantly improving translation accuracy for ongoing conversations or media.
-- **Customizable Overlay:**
-  - Adjust font size, colors, bolding, and stroke.
-  - Control background opacity.
-  - "Click-through" mode to keep the translator visible without interfering with your workspace.
-  - Toggle between showing original captions, translations, or both.
-- **History Logging:** Automatically saves translations to a local SQLite database for later review.
-- **Latency Tracking:** Optional display of API response times to help you choose the fastest provider.
-- **Privacy Focused:** Support for local LLMs (Ollama/LMStudio) ensures your data stays on your machine.
+## 📸 Screenshots
+
+![alt text]({3DBAB58F-7C6D-4052-AED6-C7F2D110CE22}.png)
+![alt text]({BCB24980-C4F8-4D1C-AFFF-66BB371BAAAD}.png)
+![alt text]({C1FCF0DC-459F-4EB6-9F9D-D905B3A7E29A}.png)
+
+---
+
+## � Download
+
+Get the latest stable release of Overlay Translator here:
+
+> **[🚀 Download Latest Release (April 14 Update)](https://github.com/Bakemono21/OverlayTranslator/releases/tag/updated-translator-april14)**
+
+---
+
+## ✨ Key Features
+
+### 🌍 Intelligent Translation
+
+- **Real-Time Engine:** Instant translation of system audio captured via Windows Live Captions.
+- **Context-Aware (LLM):** Utilizes Large Language Models to analyze previous sentences, ensuring nuanced and coherent translations for ongoing dialogue.
+- **Versatile API Support:**
+  - **LLMs:** OpenAI, Ollama (Local), LMStudio, OpenRouter.
+  - **Traditional Engines:** DeepL, Google Translate, Youdao, Baidu, LibreTranslate.
+- **Privacy First:** Full support for local inference (Ollama/LMStudio) to keep your data on your own hardware.
+
+### 🎨 Tailored User Experience
+
+- **Customizable Overlay:** Fine-tune font size, colors, stroke weight, and background opacity.
+- **Click-Through Mode:** Keeps the translator visible while allowing you to interact with windows behind it.
+- **Performance Monitoring:** Optional latency tracking to monitor API response times in real-time.
+- **Persistence:** Local SQLite database integration for automatic history logging and review.
+
+---
 
 ## 📋 Prerequisites
 
 - **Operating System:** Windows 11 (Version 22H2 or later).
-  - _Note:_ Windows 11 24H2 users must manage the "Source Language" directly within the Windows Live Captions settings.
-- **Windows Live Captions:** Must be installed and configured on your system.
+  - _Note for 24H2:_ Source language selection must be handled within the native Windows Live Captions settings.
+- **Windows Live Captions:** Must be enabled and configured on your device.
 
-## 🚀 Getting Started
+## 🚀 Quick Start Guide
 
-1. **Initial Setup:**
-   - Launch the application. On the first run, a "Getting Started" guide will appear.
-   - Ensure Windows Live Captions is open and set to **"Position > Overlaid on screen"**.
-   - Download the necessary language packs through Windows settings as prompted by Live Captions.
+1.  **System Setup:** Ensure Windows Live Captions is active and set to **"Position > Overlaid on screen"**.
+2.  **Configuration:**
+    - Open the **Setting** page.
+    - Choose your provider (e.g., Google for ease of use, or OpenAI/Ollama for accuracy).
+    - Input your API keys or local endpoints.
+3.  **Activation:** Click **"Show"** in settings to verify Live Captions is running, then **"Hide"** to transfer the caption stream to the Overlay Translator UI.
+4.  **Targeting:** Set your target language using BCP 47 tags (e.g., `en`, `zh-CN`, `ja`).
 
-2. **Configuration:**
-   - Navigate to the **Setting** page.
-   - Select your preferred **Translate API**.
-   - Enter your API keys or local endpoint URLs (e.g., `http://localhost:11434` for Ollama).
-   - Set your **Target Language** using BCP 47 tags (e.g., `en`, `zh-CN`, `ja`).
+---
 
-3. **Usage:**
-   - Click **"Show"** in the settings to ensure Live Captions is active, then **"Hide"** to let the Overlay Translator take over the UI.
-   - Switch to the **Caption** page to see the live feed or use the **Overlay Window** for a minimalist view while watching videos or attending meetings.
+## 🛠 Advanced Customization
 
-## 🛠 Customization
-
-### API Interval
-
-Determines how frequently the API is called. A smaller interval provides faster updates but consumes more API tokens.
-
-### Contexts vs. Display Sentences
-
-- **Contexts:** How many previous sentences are sent to the LLM to improve the current translation.
-- **Display Sentences:** How many previous translation "cards" are visible in the overlay at once.
-
-### Custom Prompts
-
-Advanced users can modify the translation prompt in `setting.json` to change the "persona" of the translator (e.g., making it more formal, or specialized for technical fields).
+- **API Interval:** Control the balance between update frequency and token consumption.
+- **Context Buffer:** Define how many previous sentences are sent to LLMs for context-aware processing.
+- **Custom Prompts:** Edit `setting.json` to redefine the "persona" of the translator (e.g., forcing a more technical or formal tone).
 
 ## 📂 Project Structure
 
-- `src/pages/`: Contains the UI logic for Settings, History, and Info pages.
-- `src/windows/`: Manages the Main window and the transparent Overlay window.
-- `src/apis/`: Implementation of various translation API connectors.
-- `src/models/`: Data structures for settings and captions.
-- `setting.json`: Primary configuration file for API keys and UI preferences.
+- `src/apis/` - Translation service connectors.
+- `src/pages/` - UI logic for Settings, History, and Information.
+- `src/windows/` - Main application window and the transparent overlay layer.
+- `src/models/` - Configuration schemas and data models.
+- `setting.json` - Global configuration and API secrets.
+
+---
 
 ## 🤝 Contributing
 
