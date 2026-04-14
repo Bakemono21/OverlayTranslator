@@ -22,6 +22,8 @@ Get the latest stable release of Overlay Translator here:
 
 > **[🚀 Download Latest Release (April 14 Update)](https://github.com/Bakemono21/OverlayTranslator/releases/tag/updated-translator-april14)**
 
+name of the file is LiveCaptionsTranslator.exe
+
 ---
 
 ## ✨ Key Features
